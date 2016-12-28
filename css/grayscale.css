@@ -264,12 +264,55 @@ a:focus {
     background-size: cover;
     -o-background-size: cover;
 }
-.Accomadation-section {
+.Accommodation-section {
     width: 100%;
     padding: 50px 0;
-    color: red;
-    background: url(../img/Accomadation-bg.jpg) no-repeat center center scroll;
+        background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.Transport-section {
+    width: 100%;
+    padding: 50px 0;
+    background-color: #28272D;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.Friday-section {
+    width: 100%;
+    padding: 50px 0;
     background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.Saturday-section {
+    width: 100%;
+    padding: 50px 0;
+    background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.SundayMonday-section {
+    width: 100%;
+    padding: 50px 0;
+    background-color: #28272D;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.RSVP-section {
+    width: 100%;
+    padding: 50px 0;
+    background-color: #28272D;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -326,6 +369,18 @@ a:focus {
   outline: none;
   color: black;
   background-color: #DA2026;
+}
+.btn-inverted {
+    border: 1px solid #DA2026;
+    outline: none;
+    color: black;
+    background-color: #DA2026;
+}
+.btn-inverted:hover,
+.btn-inverted:focus {
+    border: 1px solid #DA2026;
+    color: #DA2026;
+    background-color: transparent;
 }
 ul.banner-social-buttons {
   margin-top: 0;
