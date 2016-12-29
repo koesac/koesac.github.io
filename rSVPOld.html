@@ -1,0 +1,61 @@
+<h2>Please RSVP by July 2017</h2>
+<p>Cambo will be in touch closer to the date to arrange accomodation so please provide a valid email address.</p>
+
+<script>
+    function myFunction() {
+        if (document.getElementById("rsvpno").checked ){
+        window.alert("RSVP No")
+        }
+        else{
+         window.alert("RSVP Yes")
+        }
+    }
+</script>
+
+
+<form name="RSVP" action="#RSVP" onsubmit="myFunction()">
+    <div class="input-group ">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+        <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+            </div>
+    
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input id="fname" type="text" class="form-control" name="fname" placeholder="First Name">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="sname" type="text" class="form-control" name="sname" placeholder="Surname">
+                </div>
+    
+    <div class="radio input-lg" >
+        <label><input onchange="myFunction()" type="radio"  name="rsvp" value="yes" data-toggle="collapse" data-target="#RSVPquestions">Yes, I'll be there</label>
+        &nbsp;&nbsp;&nbsp;
+        <label><input onchange="myFunction()"  type="radio" id="rsvpno" name="rsvp" value="no" >Sorry, can't make it</label>
+    </div>
+    <div id="RSVPquestions" class="collapse">
+        <div class="checkbox input-lg">
+            <label><input type="checkbox" name="cambo" value="yes">I would like to stay at Cambo</label>
+            &nbsp;&nbsp;&nbsp;
+            <label><input type="checkbox" name="bbq" value="yes">I would like to stay for the Sunday BBQ</label>
+        </div>
+        
+        <div class="input-group ">
+            <span class="input-group-addon"><i class="fa fa-cutlery"></i></span>
+            <input id="diet" type="text" class="form-control" name="diet" placeholder="Dietary Requirements">
+                </div>
+        <br />
+        <div class="input-group ">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-music"></i></span>
+            <input id="bbq" type="text" class="form-control" name="song" placeholder="Song Request">
+                </div>
+        <br />
+        
+    </div>
+    <div class="form-group">
+        <textarea class="form-control input-lg" rows="5" id="comment" name="comment" placeholder="Comment"></textarea>
+    </div>
+    <br />
+    
+    <input class="btn btn-default btn-lg" type="submit" value="RSVP">
+        
+        </form>
