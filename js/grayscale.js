@@ -37,7 +37,7 @@ var map = null;
 // When the window has finished loading create our google map below
 google.maps.event.addDomListener(window, 'load', init);
 google.maps.event.addDomListener(window, 'resize', function() {
-    map.setCenter(new google.maps.LatLng(56.3365316, -2.8252858));
+    map.setCenter(new google.maps.LatLng(56.3283051,-2.7683854));
 });
 
 function init() {
@@ -48,7 +48,8 @@ function init() {
         zoom: 15,
 
         // The latitude and longitude to center the map (always required)
-        center: new google.maps.LatLng(56.3365316, -2.8252858), // St Andrews
+        center: new google.maps.LatLng(56.3283051,-2.7683854), // St Andrews
+        
 
         // Disables the default Google Maps UI components
         disableDefaultUI: true,
@@ -176,7 +177,7 @@ function init() {
 
     // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
     var image = 'img/map-marker.png';
-    var myLatLng = new google.maps.LatLng(56.3365316, -2.8252858);
+    var myLatLng = new google.maps.LatLng(56.3283051,-2.7683854);
     var beachMarker = new google.maps.Marker({
         position: myLatLng,
         map: map,
