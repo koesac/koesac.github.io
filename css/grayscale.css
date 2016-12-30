@@ -121,7 +121,7 @@ a:focus {
   display: table;
   width: 100%;
   height: auto;
-  padding: 100px 0;
+  padding: 200px 0;
   text-align: center;
   color: white;
   background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
@@ -242,6 +242,62 @@ a:focus {
     background-size: cover;
     -o-background-size: cover;
 }
+.Cambo-section {
+    display: table;
+    height: auto;
+    
+    width: 100%;
+    padding: 100px 0;
+    color: red;
+    background: url(../img/Cambo-bg.jpg) no-repeat center center scroll;
+    background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.Golf-section {
+    display: table;
+    height: auto;
+    
+    width: 100%;
+    padding: 100px 0;
+    color: red;
+    background: url(../img/Golf-bg.jpg) no-repeat center center scroll;
+    background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.Castle-section {
+    display: table;
+    height: auto;
+    
+    width: 100%;
+    padding: 100px 0;
+    color: red;
+    background: url(../img/Castle-bg.jpg) no-repeat center center scroll;
+    background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.Cathedral-section {
+    display: table;
+    height: auto;
+    
+    width: 100%;
+    padding: 100px 0;
+    color: red;
+    background: url(../img/Cathedral-bg.jpg) no-repeat center center scroll;
+    background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
 .Reception-section {
     width: 100%;
     padding: 50px 0;
@@ -266,7 +322,7 @@ a:focus {
 }
 .Accommodation-section {
     width: 100%;
-    padding: 50px 0;
+    padding: 0px 0;
         background-color: black;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -275,8 +331,8 @@ a:focus {
 }
 .Transport-section {
     width: 100%;
-    padding: 50px 0;
-    background-color: #28272D;
+    padding: 0px 0;
+    background-color: black;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -303,7 +359,7 @@ a:focus {
 .SundayMonday-section {
     width: 100%;
     padding: 50px 0;
-    background-color: #28272D;
+    background-color: black;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -312,7 +368,7 @@ a:focus {
 .RSVP-section {
     width: 100%;
     padding: 50px 0;
-    background-color: #28272D;
+    background-color: black;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
