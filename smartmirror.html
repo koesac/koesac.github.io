@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<style>
+body {
+    background-color: black;
+    color: white;
+    font-size: 200%;
+     font-family: 'Helvetica';
+}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="skyicons.js"></script>
+<script>
+$(document).ready(function(){
+
+var minutesnow = parseInt(Date().substring(19, 21), 10);
+
+//$.getJSON("test.json",function (data){
+var data = {
+	
+  "gotoworkbus": "https://api.tfl.gov.uk/Line/283,209,72,33,485/Arrivals?stopPointId=490003628WR&app_id=b1358f95&app_key=8378396acf63aeb6e38e90efae8b22be",
+
+};
+
+
+$.each(data, function(id, url){
+
+if (id.substring(0, 6) == "header") {
+$('#results').append("<table width='100%' id='" + id.substring(6, 100) + "'><tr><td colspan='3' style='text-align: center;'><strong>" + url + "</strong></td></tr></table>");
+
+}
+
+else {
+$.getJSON( url, function(data) {
+// $("#" + id).append(JSON.stringify(data) + "<hr>");
+
+data.sort(function(a, b) {
+var timetobusA = parseInt(a.expectedArrival.substring(14, 16), 10 ) - minutesnow ;
+if (parseInt(a.expectedArrival.substring(14, 16), 10) < minutesnow) {
+timetobusA =  60 - minutesnow;
+timetobusA = timetobusA + parseInt(a.expectedArrival.substring(14, 16), 10) ;
+}
+var timetobusB = parseInt(b.expectedArrival.substring(14, 16), 10 ) - minutesnow ;
+if (parseInt(b.expectedArrival.substring(14, 16), 10) < minutesnow) {
+timetobusB =  60 - minutesnow;
+timetobusB = timetobusB + parseInt(b.expectedArrival.substring(14, 16), 10) ;
+}
+
+    return parseFloat(timetobusA) - parseFloat(timetobusB);
+});
+
+
+$.each(data, function(i, bus){
+
+var timetobus = parseInt(bus.expectedArrival.substring(14, 16), 10 ) - minutesnow ;
+if (parseInt(bus.expectedArrival.substring(14, 16), 10) < minutesnow) {
+timetobus =  60 - minutesnow;
+timetobus = timetobus + parseInt(bus.expectedArrival.substring(14, 16), 10) ;
+}
+
+if (i < 3) {
+		$('#busses').append( bus.lineName + " (" + timetobus + " min)</br>");
+		}
+		
+		
+		});
+});
+
+};
+
+
+
+});
+//});
+
+//plex stuff
+var data = {
+	"RecentlyAdded": "http://192.168.1.100:32400/library/recentlyAdded?X-Plex-Token=KXFxdWaCvXRXCzsKMdo7",
+
+};
+$.each(data, function(id, url){
+
+ //alert("Title: " + id + " URL: " + url);
+ var i = 1;
+ $.get( url, function(xml) {
+  console.debug (xml);
+  $(xml).find("Directory").each(function() {
+      var parentTitle = $(this).attr('parentTitle');
+       var episode = $(this).attr('leafCount');
+       var watchedEpisode = $(this).attr('viewedLeafCount');
+      var addedAt = new Date( $(this).attr('addedAt') * 1000);
+      var parentThumb = "http://192.168.1.100:32400" + $(this).attr('parentThumb') + "?X-Plex-Token=KXFxdWaCvXRXCzsKMdo7"; 
+      
+   
+if (episode > watchedEpisode) {
+	if (i <= 10 ){
+      $('#plexTV').append("<img src='" + parentThumb + "' width='100px'/>"  +  "");
+      i++;
+      }
+	}
+	
+    //  alert("State: " + stateName + " Code: " + stateCode);
+    });
+    i = 1;
+    
+      $(xml).find("Video").each(function() {
+  		if (i <=10 ) {
+      var thumb = "http://192.168.1.100:32400" + $(this).attr('thumb') + "?X-Plex-Token=KXFxdWaCvXRXCzsKMdo7"; 
+      $('#plexMovie').append("<img src='" + thumb + "' width='100px'/>"  +  "");
+      i++;
+	}
+    });
+   
+ }
+ )
+
+}
+)
+//--------------------end of plex
+
+
+//Weather stuff
+
+
+$.getJSON( "https://api.darksky.net/forecast/27c10b42ed0bc2533a7aaa658c8bf510/51.5008666,-0.1666583?exclude=minutely,hourly,daily,alerts,flags&units=auto", function(data) {
+// $("#weather").append(JSON.stringify(data) + "<hr>");
+ var skycons = new Skycons({"color": "white"});
+  // on Android, a nasty hack is needed: {"resizeClear": true}
+	var icon = data.currently.icon
+	if (data.currently.precipProbability > 0 ){
+	$('#weather').append("Chance of Rain " + data.currently.precipProbability + "%");
+	}
+	$('#weather').append(Math.round(data.currently.apparentTemperature) + "&deg;C");
+	
+  // you can add a canvas by it's ID...
+  skycons.add("icon1", icon);
+})
+//--------------------
+//line status
+
+
+$.getJSON( "https://api.tfl.gov.uk/Line/district%2Ccentral%2Cpiccadilly/Status?detail=false", function(data) {
+// $("#linestatus").append(JSON.stringify(data) + "<hr>");
+	$.each(data, function(i, line){
+		 $('#linestatus').append(line.name + ": " + line.lineStatuses[0].statusSeverityDescription +"</br>");
+		
+		
+}
+)
+
+})
+//--------------------
+startTime()
+
+});
+
+//time
+
+
+function startTime() {
+    var today = new Date();
+    var weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+    
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    var n = weekday[today.getDay()];
+    var d = today.getDate();
+
+
+    
+    
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('time').innerHTML =  n + " " + d + nth(d) + "</br><span style='font-size: 300%;'>" +  h + ":" + m +  "</span>";
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+
+function nth(d) {
+  if(d>3 && d<21) return 'th'; // thanks kennebec
+  switch (d % 10) {
+        case 1:  return "st";
+        case 2:  return "nd";
+        case 3:  return "rd";
+        default: return "th";
+    }
+} 
+
+//--------------------
+
+</script>
+
+</head>
+
+<body>
+
+	<div id="time"  style="float:left; width:33%"></div>
+	
+	<div id="weather"  style="float:left; width:33%">
+		<canvas id="icon1" width="128" height="128"></canvas>
+	</div>
+	<div  style="float:right; width:33%">
+		<div id="linestatus"></div>
+		
+		<div id="busses"></div>
+	</div>
+	
+
+<div style="position: absolute; bottom: 0;">
+	<div id="plexTV"></div>
+	<div id="plexMovie"></div>
+</div>	
+</body>
+</html>
+
